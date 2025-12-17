@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For you, pakyu 🤍</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { margin: 0; min-height: 100vh; background: linear-gradient(135deg, #ffd6e8, #ffeef6); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .card { background: #fff; padding: 2.5rem; border-radius: 24px; box-shadow: 0 20px 40px rgba(255, 105, 180, 0.25); max-width: 360px; text-align: center; position: relative; animation: float 4s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    h1 { color: #ff5fa2; margin-bottom: 0.5rem; font-size: 1.8rem; }
+    p { color: #555; font-size: 0.95rem; line-height: 1.5; }
+    button { margin-top: 1.5rem; background: linear-gradient(135deg, #ff7eb3, #ff4f9a); border: none; color: white; padding: 0.75rem 1.5rem; border-radius: 999px; font-size: 0.95rem; cursor: pointer; box-shadow: 0 10px 20px rgba(255, 79, 154, 0.35); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    button:hover { transform: scale(1.05); box-shadow: 0 14px 28px rgba(255, 79, 154, 0.45); }
+    .hidden { display: none; }
+    .heart { position: absolute; color: #ff5fa2; font-size: 1.2rem; animation: rise 4s linear infinite; opacity: 0.8; }
+    @keyframes rise { 0% { transform: translateY(0) scale(1); opacity: 0; } 20% { opacity: 0.8; } 100% { transform: translateY(-120vh) scale(1.5); opacity: 0; } }
+    .message { margin-top: 1rem; background: #fff0f7; padding: 1rem; border-radius: 16px; color: #ff5fa2; font-weight: 500; animation: pop 0.4s ease; }
+    @keyframes pop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Hi, Maxiiii 💗</h1>
+    <p>I made this tiny pink corner of the internet just for you 💕</p>
+    <button onclick="revealMessage()">Tap for a surprise</button>
+    <div id="message" class="message hidden">
+      I don’t do grand gestures, but I do choose you every day, in every little way 🌸
+    </div>
+  </div>
+
+  <script>
+    function revealMessage() {
+      const msg = document.getElementById('message');
+      msg.classList.remove('hidden');
+      createHearts();
+    }
+
+    function createHearts() {
+      for (let i = 0; i < 15; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = 3 + Math.random() * 2 + 's';
+        heart.style.fontSize = 12 + Math.random() * 20 + 'px';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }
+    }
+  </script>
+</body>
+</html>
